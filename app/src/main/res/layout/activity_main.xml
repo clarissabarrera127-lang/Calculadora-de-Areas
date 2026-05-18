@@ -1,42 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="24dp"
-    android:gravity="center"
-    android:background="#F5F5F5">
+    android:background="#F0F4F8"
+    android:gravity="center_horizontal">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Calculadora de Áreas"
+        android:text="Calculadora Géometrica"
         android:textSize="26sp"
         android:textStyle="bold"
-        android:textColor="#333333"
-        android:layout_marginBottom="40dp"/>
+        android:textColor="#1E293B"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="8dp"/>
 
-    <Button
-        android:id="@+id/btnCuadrado"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="Cuadrado"
-        android:textSize="18sp"
-        android:layout_marginBottom="16dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selecciona una figura para calcular"
+        android:textSize="16sp"
+        android:textColor="#64748B"
+        android:layout_marginBottom="32dp"/>
 
-    <Button
-        android:id="@+id/btnTriangulo"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardCuadrado"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="Triángulo"
-        android:textSize="18sp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_height="80dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground">
 
-    <Button
-        android:id="@+id/btnCirculo"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/cuadrado"
+                /> <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cuadrado"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#334155"
+            android:layout_marginStart="20dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardTriangulo"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="Círculo"
-        android:textSize="18sp"/>
+        android:layout_height="80dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/triangulo"
+              /> <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Triángulo"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#334155"
+            android:layout_marginStart="20dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardCirculo"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/circulo"
+                /> <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Círculo"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#334155"
+            android:layout_marginStart="20dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>
+
