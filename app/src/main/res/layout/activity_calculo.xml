@@ -7,6 +7,13 @@
     android:gravity="center_horizontal"
     android:background="#F5F5F5">
 
+    <ImageView
+        android:id="@+id/ivIconoFigura"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="Icono de la figura" />
     <TextView
         android:id="@+id/tvTituloFigura"
         android:layout_width="wrap_content"
