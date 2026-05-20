@@ -14,6 +14,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginBottom="8dp"
         android:contentDescription="Icono de la figura" />
+
     <TextView
         android:id="@+id/tvTituloFigura"
         android:layout_width="wrap_content"
@@ -25,7 +26,6 @@
         android:layout_marginTop="32dp"
         android:layout_marginBottom="32dp"/>
 
-    <!-- Primer campo de texto (para Lado, Base o Radio) -->
     <EditText
         android:id="@+id/etCampo1"
         android:layout_width="match_parent"
@@ -36,12 +36,22 @@
         android:background="@android:drawable/editbox_background"
         android:layout_marginBottom="16dp"/>
 
-    <!-- Segundo campo (Se usará solo para la Altura del triángulo, empieza oculto) -->
     <EditText
         android:id="@+id/etCampo2"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:hint="Ingrese altura"
+        android:hint="Ingrese segundo valor"
+        android:inputType="numberDecimal"
+        android:padding="12dp"
+        android:background="@android:drawable/editbox_background"
+        android:layout_marginBottom="16dp"
+        android:visibility="gone"/>
+
+    <EditText
+        android:id="@+id/etCampo3"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:hint="Ingrese tercer valor"
         android:inputType="numberDecimal"
         android:padding="12dp"
         android:background="@android:drawable/editbox_background"
@@ -63,6 +73,47 @@
         android:text="Resultado: "
         android:textSize="22sp"
         android:textStyle="bold"
-        android:textColor="#388E3C"/>
+        android:textColor="#388E3C"
+        android:layout_marginBottom="32dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageButton
+            android:id="@+id/btnLimpiar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="24dp"
+            android:contentDescription="Limpiar"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="fitCenter"
+            android:padding="12dp"
+            android:src="@android:drawable/ic_menu_delete" />
+
+        <ImageButton
+            android:id="@+id/btnInicio"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="24dp"
+            android:contentDescription="Inicio"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="fitCenter"
+            android:padding="12dp"
+            android:src="@android:drawable/ic_menu_revert" />
+
+        <ImageButton
+            android:id="@+id/btnSalir"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:contentDescription="Salir"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="fitCenter"
+            android:padding="12dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel" />
+
+    </LinearLayout>
 
 </LinearLayout>

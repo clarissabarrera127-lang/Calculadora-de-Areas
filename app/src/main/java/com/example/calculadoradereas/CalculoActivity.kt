@@ -5,92 +5,167 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlin.math.PI
 import kotlin.math.pow
+import kotlin.math.tan
 
 class CalculoActivity : AppCompatActivity() {
 
-    // Variable para guardar qué sonido le toca a la figura actual
     private var sonidoFiguraId: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calculo)
 
-        // Enlazamos componentes del XML (Incluyendo el nuevo ImageView)
-        val ivIcono = findViewById<ImageView>(R.id.ivIconoFigura)
-        val tvTitulo = findViewById<TextView>(R.id.tvTituloFigura)
-        val etCampo1 = findViewById<EditText>(R.id.etCampo1)
-        val etCampo2 = findViewById<EditText>(R.id.etCampo2)
+        val ivIcono    = findViewById<ImageView>(R.id.ivIconoFigura)
+        val tvTitulo   = findViewById<TextView>(R.id.tvTituloFigura)
+        val etCampo1   = findViewById<EditText>(R.id.etCampo1)
+        val etCampo2   = findViewById<EditText>(R.id.etCampo2)
+        val etCampo3   = findViewById<EditText>(R.id.etCampo3)
         val btnCalcular = findViewById<Button>(R.id.btnCalcular)
         val tvResultado = findViewById<TextView>(R.id.tvResultado)
 
-        // Recibimos el texto que nos mandó la pantalla principal
+        // Botones inferiores
+        val btnLimpiar = findViewById<ImageButton>(R.id.btnLimpiar)
+        val btnInicio = findViewById<ImageButton>(R.id.btnInicio)
+        val btnSalir = findViewById<ImageButton>(R.id.btnSalir)
+
         val figura = intent.getStringExtra("FIGURA_SELECCIONADA") ?: ""
 
-        // Configuramos la pantalla (Texto, Imagen y Sonido asignado) según la figura
+        // ── Configuración de pantalla según figura ──────────────────────────
         when (figura) {
             "cuadrado" -> {
                 tvTitulo.text = "Área del Cuadrado"
                 etCampo1.hint = "Lado (cm)"
                 etCampo2.visibility = View.GONE
-                ivIcono.setImageResource(R.drawable.cuadrado) // Asigna icono
-                sonidoFiguraId = R.raw.cuadrado               // Guarda el ID del sonido
+                etCampo3.visibility = View.GONE
+                ivIcono.setImageResource(R.drawable.cuadrado)
+                sonidoFiguraId = R.raw.cuadrado
             }
             "triangulo" -> {
                 tvTitulo.text = "Área del Triángulo"
                 etCampo1.hint = "Base (cm)"
                 etCampo2.hint = "Altura (cm)"
                 etCampo2.visibility = View.VISIBLE
-                ivIcono.setImageResource(R.drawable.triangulo) // Asigna icono
-                sonidoFiguraId = R.raw.triangulo               // Guarda el ID del sonido
+                etCampo3.visibility = View.GONE
+                ivIcono.setImageResource(R.drawable.triangulo)
+                sonidoFiguraId = R.raw.triangulo
             }
             "circulo" -> {
                 tvTitulo.text = "Área del Círculo"
                 etCampo1.hint = "Radio (cm)"
                 etCampo2.visibility = View.GONE
-                ivIcono.setImageResource(R.drawable.circulo) // Asigna icono
-                sonidoFiguraId = R.raw.circulo               // Guarda el ID del sonido
+                etCampo3.visibility = View.GONE
+                ivIcono.setImageResource(R.drawable.circulo)
+                sonidoFiguraId = R.raw.circulo
+            }
+            "rectangulo" -> {
+                tvTitulo.text = "Área del Rectángulo"
+                etCampo1.hint = "Base (cm)"
+                etCampo2.hint = "Altura (cm)"
+                etCampo2.visibility = View.VISIBLE
+                etCampo3.visibility = View.GONE
+                ivIcono.setImageResource(R.drawable.rectangulo)
+                sonidoFiguraId = R.raw.rectangulo
+            }
+            "trapecio" -> {
+                tvTitulo.text = "Área del Trapecio"
+                etCampo1.hint = "Base mayor (cm)"
+                etCampo2.hint = "Base menor (cm)"
+                etCampo3.hint = "Altura (cm)"
+                etCampo2.visibility = View.VISIBLE
+                etCampo3.visibility = View.VISIBLE
+                ivIcono.setImageResource(R.drawable.trapecio)
+                sonidoFiguraId = R.raw.trapecio
+            }
+            "poligono" -> {
+                tvTitulo.text = "Área del Polígono Regular"
+                etCampo1.hint = "Longitud del lado (cm)"
+                etCampo2.hint = "Número de lados (≥ 5)"
+                etCampo2.visibility = View.VISIBLE
+                etCampo3.visibility = View.GONE
+                ivIcono.setImageResource(R.drawable.poligono)
+                sonidoFiguraId = R.raw.poligono
             }
         }
 
-        // Acción al presionar el botón Calcular
+        // ── Calcular ────────────────────────────────────────────────────────
         btnCalcular.setOnClickListener {
             val txt1 = etCampo1.text.toString()
             val txt2 = etCampo2.text.toString()
+            val txt3 = etCampo3.text.toString()
 
-            // Validación: Que los campos necesarios no estén vacíos
-            if (txt1.isEmpty() || (figura == "triangulo" && txt2.isEmpty())) {
+            val necesitaCampo2 = figura in listOf("triangulo", "rectangulo", "trapecio", "poligono")
+            val necesitaCampo3 = figura == "trapecio"
+
+            if (txt1.isEmpty()
+                || (necesitaCampo2 && txt2.isEmpty())
+                || (necesitaCampo3 && txt3.isEmpty())) {
                 Toast.makeText(this, "Por favor introduce los datos requeridos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // ¡REPRODUCIR SONIDO! Al pasar la validación, suena la figura
+            if (figura == "poligono") {
+                val n = txt2.toDoubleOrNull()
+                if (n == null || n < 5 || n != n.toLong().toDouble()) {
+                    Toast.makeText(this, "El número de lados debe ser un entero ≥ 5", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+            }
+
             reproducirSonido(sonidoFiguraId)
 
             val v1 = txt1.toDouble()
             var area = 0.0
 
-            // Hacemos la operación matemática según corresponda
             when (figura) {
-                "cuadrado" -> area = v1.pow(2)
-                "circulo" -> area = PI * v1.pow(2)
-                "triangulo" -> {
-                    val v2 = txt2.toDouble()
-                    area = (v1 * v2) / 2
+                "cuadrado"   -> area = v1.pow(2)
+                "circulo"    -> area = PI * v1.pow(2)
+                "triangulo"  -> area = (v1 * txt2.toDouble()) / 2.0
+                "rectangulo" -> area = v1 * txt2.toDouble()
+                "trapecio"   -> {
+                    val baseMayor = v1
+                    val baseMenor = txt2.toDouble()
+                    val altura    = txt3.toDouble()
+                    area = ((baseMayor + baseMenor) / 2.0) * altura
+                }
+                "poligono"   -> {
+                    val lado = v1
+                    val n    = txt2.toDouble()
+                    area = (n * lado.pow(2)) / (4.0 * tan(PI / n))
                 }
             }
 
-            // Mostramos el resultado con dos decimales
             tvResultado.text = String.format("Resultado: %.2f cm²", area)
+        }
+
+        // ── Lógica de los botones inferiores ────────────────────────────────
+
+        // 1. Limpiar campos
+        btnLimpiar.setOnClickListener {
+            etCampo1.text.clear()
+            etCampo2.text.clear()
+            etCampo3.text.clear()
+            tvResultado.text = "Resultado: "
+            etCampo1.requestFocus()
+        }
+
+        // 2. Regresar al menú principal
+        btnInicio.setOnClickListener {
+            finish()
+        }
+
+        // 3. Salir completamente de la app
+        btnSalir.setOnClickListener {
+            finishAffinity()
         }
     }
 
-    // Función auxiliar para reproducir el audio de la figura
     private fun reproducirSonido(idSonido: Int) {
         if (idSonido != 0) {
             val mp = MediaPlayer.create(this, idSonido)
