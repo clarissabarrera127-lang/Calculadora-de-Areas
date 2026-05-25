@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F0F4F8">
 
     <LinearLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -15,7 +15,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Calculadora Geométrica"
+            android:text="@string/calculadora_geom_trica"
             android:textSize="26sp"
             android:textStyle="bold"
             android:textColor="#1E293B"
@@ -30,26 +30,28 @@
             android:textColor="#64748B"
             android:layout_marginBottom="32dp"/>
 
+        <!-- CUADRADO -->
         <androidx.cardview.widget.CardView
             android:id="@+id/cardCuadrado"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginBottom="16dp"
             app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?android:attr/selectableItemBackground">
+            app:cardElevation="4dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:padding="16dp">
+
                 <ImageView
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:src="@drawable/cuadrado"/>
+                    android:contentDescription="@string/cuadrado"
+                    android:src="@drawable/cuadrado" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -59,59 +61,66 @@
                     android:textColor="#334155"
                     android:layout_marginStart="20dp"/>
             </LinearLayout>
+
         </androidx.cardview.widget.CardView>
 
+        <!-- TRIANGULO -->
         <androidx.cardview.widget.CardView
             android:id="@+id/cardTriangulo"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginBottom="16dp"
             app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?android:attr/selectableItemBackground">
+            app:cardElevation="4dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
+                android:contentDescription="@string/triangulo"
                 android:gravity="center_vertical"
+                android:orientation="horizontal"
                 android:padding="16dp">
+
                 <ImageView
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:src="@drawable/triangulo"/>
+                    android:contentDescription="@string/figuratriangulo"
+                    android:src="@drawable/triangulo" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
                     android:text="Triángulo"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
                     android:textColor="#334155"
-                    android:layout_marginStart="20dp"/>
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
             </LinearLayout>
+
         </androidx.cardview.widget.CardView>
 
+        <!-- CIRCULO -->
         <androidx.cardview.widget.CardView
             android:id="@+id/cardCirculo"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginBottom="16dp"
             app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?android:attr/selectableItemBackground">
+            app:cardElevation="4dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:padding="16dp">
+
                 <ImageView
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:src="@drawable/circulo"/>
+                    android:contentDescription="@string/circulo"
+                    android:src="@drawable/circulo" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -121,28 +130,31 @@
                     android:textColor="#334155"
                     android:layout_marginStart="20dp"/>
             </LinearLayout>
+
         </androidx.cardview.widget.CardView>
 
+        <!-- RECTANGULO -->
         <androidx.cardview.widget.CardView
             android:id="@+id/cardRectangulo"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginBottom="16dp"
             app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?android:attr/selectableItemBackground">
+            app:cardElevation="4dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:padding="16dp">
+
                 <ImageView
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:src="@drawable/rectangulo"/>
+                    android:contentDescription="@string/figurarectangulo"
+                    android:src="@drawable/rectangulo" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -152,28 +164,31 @@
                     android:textColor="#334155"
                     android:layout_marginStart="20dp"/>
             </LinearLayout>
+
         </androidx.cardview.widget.CardView>
 
+        <!-- TRAPECIO -->
         <androidx.cardview.widget.CardView
             android:id="@+id/cardTrapecio"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginBottom="16dp"
             app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?android:attr/selectableItemBackground">
+            app:cardElevation="4dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:padding="16dp">
+
                 <ImageView
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:src="@drawable/trapecio"/>
+                    android:contentDescription="@string/figuratrapecio"
+                    android:src="@drawable/trapecio" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -183,48 +198,154 @@
                     android:textColor="#334155"
                     android:layout_marginStart="20dp"/>
             </LinearLayout>
+
         </androidx.cardview.widget.CardView>
 
+        <!-- POLIGONO -->
         <androidx.cardview.widget.CardView
             android:id="@+id/cardPoligono"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="16dp"
             app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?android:attr/selectableItemBackground">
+            app:cardElevation="4dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:padding="16dp">
+
                 <ImageView
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:src="@drawable/poligono"/>
+                    android:contentDescription="@string/figurapoligono"
+                    android:src="@drawable/poligono" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Polígono Regular"
+                    android:text="Polígono"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="#334155"
                     android:layout_marginStart="20dp"/>
             </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- ROMBO -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardRombo"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:contentDescription="@string/figurarombo"
+                    android:src="@drawable/rombo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rombo"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#334155"
+                    android:layout_marginStart="20dp"/>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- OVALO -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardOvalo"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:contentDescription="@string/figuraovalo"
+                    android:src="@drawable/ovalo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Óvalo"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#334155"
+                    android:layout_marginStart="20dp"/>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- PARALELOGRAMO -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardParalelogramo"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:contentDescription="@string/figuraparalelogramo"
+                    android:src="@drawable/paralelogramo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Paralelogramo"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#334155"
+                    android:layout_marginStart="20dp"/>
+            </LinearLayout>
+
         </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/btnSalirApp"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginBottom="32dp"
             android:text="Salir de la aplicación"
             android:textSize="18sp"
             android:textColor="@android:color/white"
-            android:backgroundTint="#D32F2F" />
+            android:backgroundTint="#D32F2F"/>
 
     </LinearLayout>
+
 </ScrollView>

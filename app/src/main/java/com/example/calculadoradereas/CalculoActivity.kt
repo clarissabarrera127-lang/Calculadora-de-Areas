@@ -92,6 +92,33 @@ class CalculoActivity : AppCompatActivity() {
                 ivIcono.setImageResource(R.drawable.poligono)
                 sonidoFiguraId = R.raw.poligono
             }
+            "rombo" -> {
+                tvTitulo.text = "Área del Rombo"
+                etCampo1.hint = "Diagonal mayor (cm)"
+                etCampo2.hint = "Diagonal menor (cm)"
+                etCampo2.visibility = View.VISIBLE
+                etCampo3.visibility = View.GONE
+                ivIcono.setImageResource(R.drawable.rombo)
+                sonidoFiguraId = R.raw.rombo
+            }
+            "ovalo" -> {
+                tvTitulo.text = "Área del Óvalo"
+                etCampo1.hint = "Radio mayor (cm)"
+                etCampo2.hint = "Radio menor (cm)"
+                etCampo2.visibility = View.VISIBLE
+                etCampo3.visibility = View.GONE
+                ivIcono.setImageResource(R.drawable.ovalo)
+                sonidoFiguraId = R.raw.ovalo
+            }
+            "paralelogramo" -> {
+                tvTitulo.text = "Área del Paralelogramo"
+                etCampo1.hint = "Base (cm)"
+                etCampo2.hint = "Altura (cm)"
+                etCampo2.visibility = View.VISIBLE
+                etCampo3.visibility = View.GONE
+                ivIcono.setImageResource(R.drawable.paralelogramo)
+                sonidoFiguraId = R.raw.paralelogramo
+            }
         }
 
         // ── Calcular ────────────────────────────────────────────────────────
@@ -100,7 +127,15 @@ class CalculoActivity : AppCompatActivity() {
             val txt2 = etCampo2.text.toString()
             val txt3 = etCampo3.text.toString()
 
-            val necesitaCampo2 = figura in listOf("triangulo", "rectangulo", "trapecio", "poligono")
+            val necesitaCampo2 = figura in listOf(
+                "triangulo",
+                "rectangulo",
+                "trapecio",
+                "poligono",
+                "rombo",
+                "ovalo",
+                "paralelogramo"
+            )
             val necesitaCampo3 = figura == "trapecio"
 
             if (txt1.isEmpty()
@@ -138,6 +173,23 @@ class CalculoActivity : AppCompatActivity() {
                     val lado = v1
                     val n    = txt2.toDouble()
                     area = (n * lado.pow(2)) / (4.0 * tan(PI / n))
+                }
+                "rombo" -> {
+                    val diagonalMayor = v1
+                    val diagonalMenor = txt2.toDouble()
+                    area = (diagonalMayor * diagonalMenor) / 2.0
+                }
+
+                "ovalo" -> {
+                    val radioMayor = v1
+                    val radioMenor = txt2.toDouble()
+                    area = PI * radioMayor * radioMenor
+                }
+
+                "paralelogramo" -> {
+                    val base = v1
+                    val altura = txt2.toDouble()
+                    area = base * altura
                 }
             }
 

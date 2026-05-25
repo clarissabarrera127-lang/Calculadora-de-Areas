@@ -23,6 +23,11 @@ class MainActivity : AppCompatActivity() {
         val cardTrapecio   = findViewById<CardView>(R.id.cardTrapecio)
         val cardPoligono   = findViewById<CardView>(R.id.cardPoligono)
 
+        // Figuras nuevas
+        val cardRombo = findViewById<CardView>(R.id.cardRombo)
+        val cardOvalo   = findViewById<CardView>(R.id.cardOvalo)
+        val cardParalelogramo   = findViewById<CardView>(R.id.cardParalelogramo)
+
         // Botón para salir
         val btnSalirApp = findViewById<Button>(R.id.btnSalirApp)
 
@@ -52,6 +57,21 @@ class MainActivity : AppCompatActivity() {
         cardPoligono.setOnClickListener {
             reproducirSonido(R.raw.poligono)
             abrirCalculo("poligono")
+        }
+
+        cardRombo.setOnClickListener {
+            reproducirSonido(R.raw.rombo)
+            abrirCalculo("rombo")
+        }
+
+        cardOvalo.setOnClickListener {
+            reproducirSonido(R.raw.ovalo)
+            abrirCalculo("ovalo")
+        }
+
+        cardParalelogramo.setOnClickListener {
+            reproducirSonido(R.raw.paralelogramo)
+            abrirCalculo("paralelogramo")
         }
 
         // --- Lógica para salir de la aplicación ---
